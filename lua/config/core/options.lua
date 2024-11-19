@@ -9,6 +9,8 @@ vim.opt.showmode = false
 
 vim.opt.breakindent = true
 
+vim.opt.wrap = false
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -47,3 +49,4 @@ vim.opt.scrolloff = 10
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
+
