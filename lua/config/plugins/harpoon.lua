@@ -13,17 +13,10 @@ return {
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, { desc = 'Harpoon UI' })
 
-    vim.keymap.set('n', '<C-h>', function()
-      harpoon:list():select(1)
-    end)
-    vim.keymap.set('n', '<C-j>', function()
-      harpoon:list():select(2)
-    end)
-    vim.keymap.set('n', '<C-k>', function()
-      harpoon:list():select(3)
-    end)
-    vim.keymap.set('n', '<C-l>', function()
-      harpoon:list():select(4)
-    end)
+    for i = 1, 5 do
+      vim.keymap.set('n', string.format('<Leader>%d', i), function()
+        harpoon:list():select(i)
+      end, { desc = string.format('Harpoon go to %d', i) })
+    end
   end,
 }
