@@ -4,12 +4,12 @@ return {
   cmd = { 'ConformInfo' },
   keys = {
     {
-      '<leader>f',
+      '<leader>cp',
       function()
         require('conform').format { async = true, lsp_fallback = true }
       end,
       mode = '',
-      desc = '[F]ormat buffer',
+      desc = 'Format buffer',
     },
   },
   opts = {
@@ -66,7 +66,6 @@ return {
           'true',
           '--arrow-parens',
           'avoid',
-          -- Add any other Prettier options you want to set
         },
       },
     },
