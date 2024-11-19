@@ -3,7 +3,7 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Open Ex file view
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = 'Open vim file tree' })
+vim.keymap.set('n', '<leader>fe', vim.cmd.Ex, { desc = 'Open vim file tree' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix list' })
