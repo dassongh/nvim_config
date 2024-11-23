@@ -39,3 +39,14 @@ end)
 vim.keymap.set('n', '<S-h>', ':bprevious<CR>', { desc = 'Go to previous buffer' })
 vim.keymap.set('n', '<S-l>', ':bnext<CR>', { desc = 'Go to next buffer' })
 vim.keymap.set('n', '<leader>q', ':bdelete<CR>', { desc = 'Delete current buffer' })
+
+-- Toggle function
+vim.keymap.set('n', '<leader>tf', function()
+  if vim.b.disable_autoformat or vim.g.disable_autoformat then
+    vim.cmd 'FormatEnable'
+    vim.notify('Autoformat enabled', vim.log.levels.INFO)
+  else
+    vim.cmd 'FormatDisable'
+    vim.notify('Autoformat disabled', vim.log.levels.INFO)
+  end
+end, { desc = 'Toggle format on save' })
