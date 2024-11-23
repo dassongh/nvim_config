@@ -48,6 +48,14 @@ keymap('n', 'gs', function()
   vim.fn.VSCodeNotify 'editor.action.triggerSuggest'
 end, default_opts)
 
+-- Diagnostic
+keymap('n', ']d', function()
+  vim.fn.VSCodeNotify 'editor.action.marker.next'
+end, default_opts)
+keymap('n', '[d', function()
+  vim.fn.VSCodeNotify 'editor.action.marker.prev'
+end, default_opts)
+
 -- better indent handling
 keymap('v', '<', '<gv', default_opts)
 keymap('v', '>', '>gv', default_opts)
