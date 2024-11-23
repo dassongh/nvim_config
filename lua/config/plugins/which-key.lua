@@ -12,7 +12,7 @@ return {
       { '<leader>s', group = 'Search' },
       { '<leader>t', group = 'Toggle' },
       { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
-      { '<leader>y', group = 'Yazi' },
+      { '<leader>;', group = 'Yazi' },
     }
   end,
 }
