@@ -35,3 +35,7 @@ vim.keymap.set('n', '<leader>|', '<C-w>v', { desc = 'Split window vertically' })
 vim.keymap.set({ 'i', 'v', 'n', 's' }, '<C-s>', function()
   vim.cmd.write()
 end)
+
+vim.keymap.set('n', '<S-h>', ':bprevious<CR>', { desc = 'Go to previous buffer' })
+vim.keymap.set('n', '<S-l>', ':bnext<CR>', { desc = 'Go to next buffer' })
+vim.keymap.set('n', '<leader>q', ':bdelete<CR>', { desc = 'Delete current buffer' })
