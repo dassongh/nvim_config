@@ -39,6 +39,64 @@ end)
 vim.keymap.set('n', '<S-h>', ':bprevious<CR>', { desc = 'Go to previous buffer' })
 vim.keymap.set('n', '<S-l>', ':bnext<CR>', { desc = 'Go to next buffer' })
 vim.keymap.set('n', '<leader>q', ':bdelete<CR>', { desc = 'Delete current buffer' })
+-- Delete buffers to left/right of current buffer
+vim.keymap.set('n', '<leader>br', function()
+  local current = vim.api.nvim_get_current_buf()
+  local buffers = vim.api.nvim_list_bufs()
+  local current_index = nil
+
+  -- Find current buffer index
+  for i, buf in ipairs(buffers) do
+    if buf == current then
+      current_index = i
+      break
+    end
+  end
+
+  -- Delete all buffers after current
+  if current_index then
+    for i = current_index + 1, #buffers do
+      if vim.api.nvim_buf_is_loaded(buffers[i]) then
+        vim.api.nvim_buf_delete(buffers[i], { force = false })
+      end
+    end
+  end
+end, { desc = 'Delete all buffers to the right' })
+
+vim.keymap.set('n', '<leader>bl', function()
+  local current = vim.api.nvim_get_current_buf()
+  local buffers = vim.api.nvim_list_bufs()
+  local current_index = nil
+
+  -- Find current buffer index
+  for i, buf in ipairs(buffers) do
+    if buf == current then
+      current_index = i
+      break
+    end
+  end
+
+  -- Delete all buffers before current
+  if current_index then
+    for i = 1, current_index - 1 do
+      if vim.api.nvim_buf_is_loaded(buffers[i]) then
+        vim.api.nvim_buf_delete(buffers[i], { force = false })
+      end
+    end
+  end
+end, { desc = 'Delete all buffers to the left' })
+
+-- Delete all buffers except current
+vim.keymap.set('n', '<leader>bo', function()
+  local current = vim.api.nvimYazi_get_current_buf()
+  local buffers = vim.api.nvim_list_bufs()
+
+  for _, buf in ipairs(buffers) do
+    if buf ~= current and vim.api.nvim_buf_is_loaded(buf) then
+      vim.api.nvim_buf_delete(buf, { force = false })
+    end
+  end
+end, { desc = 'Delete all buffers except current' })
 
 -- Toggle function
 vim.keymap.set('n', '<leader>tf', function()
