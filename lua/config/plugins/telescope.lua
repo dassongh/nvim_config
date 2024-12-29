@@ -79,15 +79,15 @@ return {
       builtin.grep_string { search = vim.fn.input 'Grep > ' }
     end, { desc = 'Find by String' })
 
-    vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search Help' })
-    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search Keymaps' })
-    vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = 'Search Select Telescope' })
-    vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Search current Word' })
-    vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Search by Grep' })
-    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Search Diagnostics' })
-    vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Search Resume' })
-    vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
-    vim.keymap.set('n', '<leader>st', builtin.colorscheme, { desc = 'Select colorscheme' })
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find Help' })
+    vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Find Keymaps' })
+    vim.keymap.set('n', '<leader>fS', builtin.builtin, { desc = 'Find Select Telescope' })
+    vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Find current Word' })
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find by Grep' })
+    vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
+    vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Find Resume' })
+    vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = 'Find Recent Files ("." for repeat)' })
+    vim.keymap.set('n', '<leader>ft', builtin.colorscheme, { desc = 'Select colorscheme' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
@@ -100,7 +100,7 @@ return {
 
     -- It's also possible to pass additional configuration options.
     --  See `:help telescope.builtin.live_grep()` for information about particular keys
-    vim.keymap.set('n', '<leader>s/', function()
+    vim.keymap.set('n', '<leader>f/', function()
       builtin.live_grep {
         grep_open_files = true,
         prompt_title = 'Live Grep in Open Files',

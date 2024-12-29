@@ -18,6 +18,11 @@ return {
         dimInactive = false, -- dim inactive window `:h hl-NormalNC`
         terminalColors = true, -- define vim.g.terminal_color_{0,17}
         theme = 'wave', -- can be "wave" (default), "dragon", "lotus"
+        overrides = function(colors)
+          return {
+            Constant = { fg = '#DCD7BA' },
+          }
+        end,
       }
       -- Setup must be called before loading
       vim.cmd 'colorscheme kanagawa'

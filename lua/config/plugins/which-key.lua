@@ -9,9 +9,9 @@ return {
       { '<leader>c', group = 'Code' },
       -- { '<leader>d', group = '[D]ocument' },
       { '<leader>f', group = 'Find' },
-      { '<leader>s', group = 'Search' },
       { '<leader>t', group = 'Toggle' },
       { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
+      { '<leader>b', group = 'Buffer' },
       { '<leader>;', group = 'Yazi' },
     }
   end,
