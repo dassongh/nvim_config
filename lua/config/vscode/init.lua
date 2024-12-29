@@ -31,29 +31,48 @@ keymap({ 'n', 'x' }, '<leader>', [[<Cmd>call VSCodeNotify('whichkey.show')<CR>]]
 
 -- Tab navigation
 keymap('n', '<S-h>', function()
-  vim.fn.VSCodeNotify 'workbench.action.previousEditor'
+  vscode.call('workbench.action.previousEditor')
 end, default_opts)
 keymap('n', '<S-l>', function()
-  vim.fn.VSCodeNotify 'workbench.action.nextEditor'
+  vscode.call('workbench.action.nextEditor')
 end, default_opts)
 
 -- Code navigation and actions
 keymap('n', 'gr', function()
-  vim.fn.VSCodeNotify 'editor.action.goToReferences'
+  vscode.call('editor.action.goToReferences')
 end, default_opts)
 keymap('n', 'gI', function()
-  vim.fn.VSCodeNotify 'editor.action.goToImplementation'
+  vscode.call('editor.action.goToImplementation')
 end, default_opts)
 keymap('n', 'gs', function()
-  vim.fn.VSCodeNotify 'editor.action.triggerSuggest'
+  vscode.call('editor.action.triggerSuggest')
 end, default_opts)
 
 -- Diagnostic
 keymap('n', ']d', function()
-  vim.fn.VSCodeNotify 'editor.action.marker.next'
+  vscode.call('editor.action.marker.next')
 end, default_opts)
 keymap('n', '[d', function()
-  vim.fn.VSCodeNotify 'editor.action.marker.prev'
+  vscode.call('editor.action.marker.prev')
+end, default_opts)
+
+-- Change
+-- Smart change navigation that works in both regular and compare editors
+keymap('n', ']c', function()
+  vscode.call('workbench.action.editor.nextChange')
+end, default_opts)
+
+keymap('n', '[c', function()
+  vscode.call('workbench.action.editor.previousChange')
+end, default_opts)
+
+-- todo: find a way to use same shortcut to navigate changes in both editors
+keymap('n', ']C', function()
+  vscode.call('workbench.action.compareEditor.nextChange')
+end, default_opts)
+
+keymap('n', '[C', function()
+  vscode.call('workbench.action.compareEditor.previousChange')
 end, default_opts)
 
 -- better indent handling
