@@ -1,5 +1,6 @@
 if vim.g.vscode then
   require 'config.vscode'
+  require 'config.lazy'
 else
   vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',

@@ -10,38 +10,40 @@ if not vim.uv.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
---  To update plugins you can run
---    :Lazy update
---
--- NOTE: Here is where you install your plugins.
-require('lazy').setup({
-  -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+local plugins = {}
 
-  -- LSP Plugins
-  {
-    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    -- used for completion, annotations and signatures of Neovim apis
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        -- Load luvit types when the `vim.uv` word is found
-        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+if vim.g.vscode then
+  plugins = vim.list_extend(plugins, {
+    {
+      'echasnovski/mini.nvim',
+      config = function()
+        require('mini.ai').setup { n_lines = 500 }
+        require('mini.surround').setup()
+      end,
+    }
+  })
+else
+  plugins = vim.list_extend(plugins, {
+    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+
+    -- LSP Plugins
+    {
+      'folke/lazydev.nvim',
+      ft = 'lua',
+      opts = {
+        library = {
+          { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+        },
       },
     },
-  },
-  { 'Bilal2453/luvit-meta', lazy = true },
-  -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+    { 'Bilal2453/luvit-meta',     lazy = true },
+    { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+    { import = 'config.plugins' },
+  })
+end
 
-  { import = 'config.plugins' },
-}, {
-  -- checker = {enabled = true, notify = false},
+require('lazy').setup(plugins, {
   ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',
