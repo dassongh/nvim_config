@@ -5,7 +5,7 @@ return {
     {
       '<leader>E',
       '<cmd>Yazi<cr>',
-      desc = 'Open yazi at the current file',
+      desc = 'Open yazi at the current dir',
     },
     {
       -- Open in the current working directory

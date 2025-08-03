@@ -1,4 +1,5 @@
 return {
+  { 'EdenEast/nightfox.nvim' }, -- lazy
   {
     'rebelot/kanagawa.nvim',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -25,7 +26,7 @@ return {
         end,
       }
       -- Setup must be called before loading
-      vim.cmd 'colorscheme kanagawa'
+      vim.cmd 'colorscheme nightfox'
     end,
   },
   {
@@ -43,6 +44,14 @@ return {
     opts = {},
     config = function()
       -- vim.cmd 'colorscheme tokyonight'
+    end,
+  },
+  {
+    'Mofiqul/vscode.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- vim.cmd 'colorscheme vscode'
     end,
   },
 }
