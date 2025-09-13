@@ -1,5 +1,6 @@
 require 'config.core.options'
 require 'config.core.keymaps'
+require 'config.core.plugin-keymaps'
 
 vim.api.nvim_create_user_command('FormatDisable', function(args)
   if args.bang then

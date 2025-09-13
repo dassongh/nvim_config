@@ -26,7 +26,7 @@ return {
         end,
       }
       -- Setup must be called before loading
-      vim.cmd 'colorscheme nightfox'
+      vim.cmd 'colorscheme carbonfox'
     end,
   },
   {

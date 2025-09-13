@@ -25,7 +25,7 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["*y]], { desc = 'Yank to system clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<C-y>', [["*y]], { desc = 'Yank to system clipboard' })
 
 -- Split window
 vim.keymap.set('n', '<leader>-', '<C-w>s', { desc = 'Split window horizontally' })
@@ -38,7 +38,7 @@ end)
 
 vim.keymap.set('n', '<S-h>', ':bprevious<CR>', { desc = 'Go to previous buffer' })
 vim.keymap.set('n', '<S-l>', ':bnext<CR>', { desc = 'Go to next buffer' })
-vim.keymap.set('n', '<leader>q', ':bdelete<CR>', { desc = 'Delete current buffer' })
+vim.keymap.set('n', '<S-q>', ':bdelete<CR>', { desc = 'Delete current buffer' })
 -- Delete buffers to left/right of current buffer
 vim.keymap.set('n', '<leader>br', function()
   local current = vim.api.nvim_get_current_buf()

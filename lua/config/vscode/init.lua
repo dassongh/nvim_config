@@ -47,6 +47,32 @@ end, default_opts)
 keymap('n', 'gs', function()
   vscode.call('editor.action.triggerSuggest')
 end, default_opts)
+keymap('n', 'gR', function()
+  vscode.call('references-view.findReferences')
+end, default_opts)
+keymap('n', 'gt', function()
+  vscode.call('editor.action.goToTypeDefinition')
+end, default_opts)
+keymap('n', 'gh', function()
+  vscode.call('editor.showCallHierarchy')
+end, default_opts)
+keymap('n', 'gpd', function()
+  vscode.call('editor.action.peekDefinition')
+end, default_opts)
+keymap('n', 'gpr', function()
+  vscode.call('editor.action.referenceSearch.trigger')
+end, default_opts)
+keymap('n', 'gpt', function()
+  vscode.call('editor.action.referenceSearch.trigger')
+end, default_opts)
+keymap('n', 'gph', function()
+  vscode.call('editor.showCallHierarchy')
+end, default_opts)
+
+-- Set by default
+-- vim.keymap.set("n", "gD", function() vim.fn.VSCodeNotify('editor.action.peekDefinition') end, default_opts)
+-- vim.keymap.set('n', 'gd', function() vim.fn.VSCodeNotify('editor.action.revealDefinition') end, default_opts)
+-- vim.keymap.set('n', 'K', function() vim.fn.VSCodeNotify('editor.action.showHover') end, default_opts)
 
 -- Diagnostic
 keymap('n', ']d', function()
@@ -75,6 +101,15 @@ keymap('n', '[C', function()
   vscode.call('workbench.action.compareEditor.previousChange')
 end, default_opts)
 
+-- Move lines
+keymap({ 'n', 'x' }, ']e', function()
+  vscode.call('editor.action.moveLinesUpAction')
+end, default_opts)
+
+keymap({ 'n', 'x' }, '[e', function()
+  vscode.call('editor.action.moveLinesUpAction')
+end, default_opts)
+
 -- better indent handling
 keymap('v', '<', '<gv', default_opts)
 keymap('v', '>', '>gv', default_opts)
@@ -85,10 +120,6 @@ keymap('v', 'p', '"_dP', default_opts)
 -- removes highlighting after escaping vim search
 keymap('n', '<Esc><Esc>', '<Esc>:nohl<CR>', default_opts)
 
--- Set by default
--- vim.keymap.set("n", "gD", function() vim.fn.VSCodeNotify('editor.action.peekDefinition') end, default_opts)
--- vim.keymap.set('n', 'gd', function() vim.fn.VSCodeNotify('editor.action.revealDefinition') end, default_opts)
--- vim.keymap.set('n', 'K', function() vim.fn.VSCodeNotify('editor.action.showHover') end, default_opts)
 
 vim.api.nvim_set_hl(0, 'YankHighlight', { bg = '#9b02be', fg = '#101116' })
 

@@ -12,10 +12,5 @@ return { -- Collection of various small independent plugins/modules
     statusline.section_location = function()
       return '%2l:%-2v/%L'
     end
-
-    require('mini.files').setup()
-    vim.keymap.set('n', '<leader>e', function()
-      MiniFiles.open(vim.api.nvim_buf_get_name(0))
-    end, { desc = 'Open file explorer' })
   end,
 }
